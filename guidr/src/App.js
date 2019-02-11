@@ -4,6 +4,7 @@ import './App.css';
 import TripList from "./components/homepage/TripList";
 import axios from 'axios'
 import AddTripForm from "./components/addTrip/AddTripForm";
+import Profile from "./components/profile/Profile";
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class App extends Component {
       <div className="App">
         <TripList trips={this.state.trips} />
         <AddTripForm />
+        <Profile/>
       </div>
     );
   }
