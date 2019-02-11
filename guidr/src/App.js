@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import TripList from "./components/homepage/TripList";
 import axios from 'axios'
+import AddTripForm from "./components/addTrip/AddTripForm";
 
 class App extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class App extends Component {
     return (
       <div className="App">
         <TripList trips={this.state.trips} />
+        <AddTripForm />
       </div>
     );
   }
