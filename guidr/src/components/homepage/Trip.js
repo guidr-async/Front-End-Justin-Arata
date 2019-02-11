@@ -17,6 +17,7 @@ const Trip = props => {
                 <p>Location: {props.trip.location}</p>
                 <p>Adventure Type: {props.trip.adventure_type}</p>
                 <p>Duration: {props.trip.duration}</p>
+                {/*need to make this display something*/}
                 <p>Work or Pleasure? {props.trip.professional}</p>
             </div>
             <div>
