@@ -20,22 +20,27 @@ const AddTripForm = props => {
                     type="radio"
                     value="Backpacking"
                 />
+                Backpacking
                 <input
                     type="radio"
                     value="Hiking"
                 />
+                Hiking
                 <input
                     type="radio"
                     value="Cycling"
                 />
+                Cycling
                 <input
                     type="radio"
                     value="Rock Climbing"
                 />
+                Rock Climbing
                 <input
                     type="radio"
                     value="Scuba Diving"
                 />
+                Scuba Diving
                 <p>Duration</p>
                 <input
                     type="text"
@@ -46,10 +51,12 @@ const AddTripForm = props => {
                     type="radio"
                     value="Work"
                 />
+                Work
                 <input
                     type="radio"
                     value="Pleasure"
                 />
+                Pleasure
                 <button>Submit</button>
             </form>
         </div>
