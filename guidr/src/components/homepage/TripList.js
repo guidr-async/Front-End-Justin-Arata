@@ -1,14 +1,31 @@
 import React from 'react'
 import Trip from './Trip'
+import styled from 'styled-components'
+
+const TripCardList = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+`
 
 const TripList = props => {
+    // console.log(props)
     return (
-        <div>
+        <TripCardList>
             {props.trips.map(trip => {
-                console.log(trip);
-                return <Trip key={trip.id} trip={trip} />
+                // console.log(trip);
+                return <Trip
+                    key={trip.id}
+                    title={trip.title}
+                    location={trip.location}
+                    adventure_type={trip.adventure_type}
+                    duration={trip.duration}
+                    professional={trip.professional}
+                    user_id={trip.user_id}
+                    date={trip.date}
+                />
             })}
-        </div>
+        </TripCardList>
     )
 }
 export default TripList;

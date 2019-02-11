@@ -4,26 +4,27 @@ import styled from 'styled-components'
 
 const TripCard = styled.div`
   border: 1px solid black;
+  width: 300px;
 `
 
 
 const Trip = props => {
+    // console.log(props)
     return (
         <TripCard>
             <div>
-                <p>{props.trip.title}</p>
+                <p>{props.title}</p>
             </div>
             <div>
-                <p>Location: {props.trip.location}</p>
-                <p>Adventure Type: {props.trip.adventure_type}</p>
-                <p>Duration: {props.trip.duration}</p>
-                {/*need to make this display something*/}
-                <p>Work or Pleasure? {props.trip.professional}</p>
+                <p>Location: {props.location}</p>
+                <p>Adventure Type: {props.adventure_type}</p>
+                <p>Duration: {props.duration}</p>
+                <p>Work or Pleasure? {props.professional ? 'Work' : 'Pleasure'}</p>
             </div>
             <div>
                 {/*need to make this username string*/}
-                <p>{props.trip.user_id}</p>
-                <p>Trip Date: {props.trip.date}</p>
+                <p>{props.user_id}</p>
+                <p>Trip Date: {props.date}</p>
             </div>
         </TripCard>
     )
