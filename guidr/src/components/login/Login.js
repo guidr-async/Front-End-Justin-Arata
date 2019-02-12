@@ -8,14 +8,6 @@ class Login extends Component {
             password: ''
         }
     }
-    handleInputChange = event => {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
-    handleLoginSubmit = event => {
-
-    }
     render() {
         return (
             <div>
@@ -24,12 +16,17 @@ class Login extends Component {
                     <input
                         type="text"
                         placeholder="Username"
+                        onChange={(event, newValue) =>
+                        this.setState({ username: newValue })}
                     />
                     <input
                         type="password"
                         placeholder="Password"
+                        onChange={(event, newValue) =>
+                        this.setState({ password: newValue })}
+                    />
                 </form>
-                <button>Login</button>
+                <button onClick={(event) => this.handleClick(event)}>Login</button>
             </div>
         );
     }
