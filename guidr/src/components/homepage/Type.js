@@ -4,7 +4,7 @@ const Type = props => {
     return (
         <div
             onClick={() => {
-                props.selectTypeHandler(props.type);
+                props.changeSelected(props.type);
             }}
         >
             {props.type}

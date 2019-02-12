@@ -1,19 +1,19 @@
 import React, {Component} from 'react';
 import Profile from "./Profile";
 import ProfileTrips from "./ProfileTrips";
+import axios
+import AddTripForm from "../addTrip/AddTripForm";
 
-class ProfileContainer extends Component {
+class ProfilePage extends Component {
     constructor(props) {
         super(props);
 
     }
 
     componentDidMount() {
-
+        axios
+            .get()
     }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-    }
-    compo
     render() {
         return (
             <div>
@@ -24,4 +24,4 @@ class ProfileContainer extends Component {
     }
 }
 
-export default ProfileContainer;
+export default ProfilePage;
