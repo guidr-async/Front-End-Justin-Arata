@@ -47,7 +47,10 @@ class HomePage extends Component {
         axios
             .put(`https://guidr2.herokuapp.com/adventures/${id}`)
             .then(response => {
-                console.log
+                console.log(response)
+            })
+            .catch(error => {
+                console.log(error)
             })
 
     }
