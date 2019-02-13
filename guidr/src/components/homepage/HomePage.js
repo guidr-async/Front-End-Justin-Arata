@@ -43,30 +43,7 @@ class HomePage extends Component {
             }
         }
     }
-    updateTrip = () => {
-        axios
-            .put(`https://guidr2.herokuapp.com/adventures/${this.state.trips.id}`)
-            .then(response => {
-                console.log(response)
-                this.setState({
-                    trips: response.data,
-                    newTrip: {
-                        user_id: null,
-                        adventure_type: '',
-                        title: '',
-                        location: '',
-                        duration: '',
-                        description: '',
-                        professional: false,
-                        date: ''
-                    }
-                })
-            })
-            .catch(error => {
-                console.log(error)
-            })
 
-    }
     deleteTrip = (event, id) => {
         event.preventDefault();
         // console.log(id)
@@ -83,7 +60,7 @@ class HomePage extends Component {
     handleChange = event => {
         let newTrip = {
             ...this.state.newTrip,
-            [event.target.name]: event.target.name
+            [event.target.name]: event.target.value
         };
         this.setState({
             newTrip
@@ -129,9 +106,9 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                <TypeList types={this.state.types} selectedType={this.state.selected} changeSelected={this.changeSelected} />
-                <TripList deleteTrip={this.deleteTrip} trips={this.filterTypes()} />
-                <AddTripForm updateTrip={this.updateTrip} addTrip={this.addTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} />
+                {/*<TypeList types={this.state.types} selectedType={this.state.selected} changeSelected={this.changeSelected} />*/}
+                <TripList handleChange={this.handleChange} deleteTrip={this.deleteTrip} trips={this.filterTypes()} newTrip={this.state.newTrip} />
+                <AddTripForm addTrip={this.addTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} />
             </div>
         );
     }
