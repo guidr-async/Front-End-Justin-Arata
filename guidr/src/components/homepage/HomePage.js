@@ -43,11 +43,24 @@ class HomePage extends Component {
             }
         }
     }
-    updateTrip = (event, id) => {
+    updateTrip = () => {
         axios
-            .put(`https://guidr2.herokuapp.com/adventures/${id}`)
+            .put(`https://guidr2.herokuapp.com/adventures/${this.state.trips.id}`)
             .then(response => {
                 console.log(response)
+                this.setState({
+                    trips: response.data,
+                    newTrip: {
+                        user_id: null,
+                        adventure_type: '',
+                        title: '',
+                        location: '',
+                        duration: '',
+                        description: '',
+                        professional: false,
+                        date: ''
+                    }
+                })
             })
             .catch(error => {
                 console.log(error)
@@ -56,7 +69,7 @@ class HomePage extends Component {
     }
     deleteTrip = (event, id) => {
         event.preventDefault();
-        console.log(id)
+        // console.log(id)
         axios
             .delete(`https://guidr2.herokuapp.com/adventures/${id}`)
             .then(response => {
@@ -118,7 +131,7 @@ class HomePage extends Component {
             <div>
                 <TypeList types={this.state.types} selectedType={this.state.selected} changeSelected={this.changeSelected} />
                 <TripList deleteTrip={this.deleteTrip} trips={this.filterTypes()} />
-                <AddTripForm addTrip={this.addTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} />
+                <AddTripForm updateTrip={this.updateTrip} addTrip={this.addTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} />
             </div>
         );
     }
