@@ -26,6 +26,7 @@ const Trip = props => {
                 <p>{props.user_id}</p>
                 <p>Trip Date: {props.date}</p>
             </div>
+            <button onClick={(e) => props.deleteTrip(e, props.id)}>X</button>
         </TripCard>
     )
 }

@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import axios from 'axios'
+import Login from './Login'
 
 class SignUp extends Component {
     constructor(props) {
@@ -26,7 +28,22 @@ class SignUp extends Component {
             }
             axios
                 .post('https://guidr2.herokuapp.com/user', payload)
-                .then()
+                .then(response => {
+                    console.log(response)
+                    if(response.status === 200){
+                        let loginScreen = [];
+                        loginScreen.push(<Login parentContext={this} appContext={this.props.appContext} />)
+                        let loginMessage = 'Not registered';
+                        this.props.parentContext.setState({
+                            loginScreen: loginScreen,
+                            loginMessage: loginMessage,
+                            buttonLabel: 'Register',
+                            isLogin: true
+                        })
+
+                    }
+                        })
+
         }
         axios
             .post('https://guidr2.herokuapp.com/user')

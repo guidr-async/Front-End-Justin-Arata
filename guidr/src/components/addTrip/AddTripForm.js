@@ -5,60 +5,74 @@ const AddTripForm = props => {
     return (
         <div>
             <h1>Trip Form</h1>
-            <form>
+            <form onSubmit={props.addTrip}>
                 <p>Title</p>
                 <input
+                    value={props.newTrip.title}
+                    name="title"
                     type="text"
                     placeholder="Trip title"
+                    onChange={props.handleChange}
                 />
                 <p>Location</p>
                 <input
+                    value={props.newTrip.location}
+                    name="location"
                     type="text"
                     placeholder="Trip location"
+                    onChange={props.handleChange}
                 />
                 <p>Adventure Type</p>
                 <input
-                    type="radio"
-                    value="Backpacking"
+                    value={props.newTrip.adventure_type}
+                    name="adventure_type"
+                    type="text"
+                    onChange={props.handleChange}
                 />
-                Backpacking
-                <input
-                    type="radio"
-                    value="Hiking"
-                />
-                Hiking
-                <input
-                    type="radio"
-                    value="Cycling"
-                />
-                Cycling
-                <input
-                    type="radio"
-                    value="Rock Climbing"
-                />
-                Rock Climbing
-                <input
-                    type="radio"
-                    value="Scuba Diving"
-                />
-                Scuba Diving
                 <p>Duration</p>
                 <input
+                    value={props.newTrip.duration}
+                    onChange={props.handleChange}
+                    name="duration"
                     type="text"
                     placeholder="Trip length"
                 />
-                <p>Work or Pleasure?</p>
+                {/*<p>Work or Pleasure?</p>*/}
+                {/*<input*/}
+                    {/*value={props.newTrip.professional}*/}
+                    {/*onChange={props.handleChange}*/}
+                    {/*name="professional"*/}
+                    {/*type="radio"*/}
+                {/*/>*/}
+                {/*Work*/}
+                {/*<input*/}
+                    {/*value={props.newTrip.professional}*/}
+                    {/*onChange={props.handleChange}*/}
+                    {/*name="professional"*/}
+                    {/*type="radio"*/}
+                {/*/>*/}
+                {/*Pleasure*/}
                 <input
-                    type="radio"
-                    value="Work"
+                    value={props.newTrip.description}
+                    onChange={props.handleChange}
+                    name="description"
+                    type="text"
+                    placeholder="Enter description here"
                 />
-                Work
+                Description
                 <input
-                    type="radio"
-                    value="Pleasure"
+                    value={props.newTrip.date}
+                    onChange={props.handleChange}
+                    name="date"
+                    type="text"
+                    placeholder="Enter date here"
                 />
-                Pleasure
-                <button>Submit</button>
+                Date
+                <input
+                type="submit"
+                value="submit"
+                />
+                {/*<button onClick={props.addTrip}>Submit</button>*/}
             </form>
         </div>
     )
