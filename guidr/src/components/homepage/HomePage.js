@@ -81,7 +81,7 @@ class HomePage extends Component {
         axios
             .post('https://guidr2.herokuapp.com/adventures', this.state.newTrip)
             .then(response => {
-                console.log(response)
+                // console.log(response)
                 this.setState({
                     trips: [...this.state.trips, response.data]
                 })
@@ -116,7 +116,7 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                <TypeList types={this.state.types} selectedType={this.state.selected} selectTypeHandler={this.changeSelected} />
+                <TypeList types={this.state.types} selectedType={this.state.selected} changeSelected={this.changeSelected} />
                 <TripList deleteTrip={this.deleteTrip} trips={this.filterTypes()} />
                 <AddTripForm addTrip={this.addTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} />
             </div>
