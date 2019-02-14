@@ -6,6 +6,7 @@ import axios from "axios";
 const TripCard = styled.div`
   border: 1px solid black;
   width: 300px;
+  margin: 15px;
 `;
 
 class Trip extends Component {

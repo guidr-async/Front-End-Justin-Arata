@@ -2,9 +2,19 @@ import React, {Component} from 'react';
 import TripList from "./TripList";
 import axios from "axios";
 import AddTripForm from "../addTrip/AddTripForm";
-import TypeList from './TypeList';
 import {Link, Route} from 'react-router-dom'
-import NavLink from "../../App";
+import styled from 'styled-components'
+
+// Styled Components
+const NavBar = styled.div`
+  border: 1px solid black;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight: bold;
+  text-decoration: none;
+`
 
 class HomePage extends Component {
     constructor(props) {
@@ -95,10 +105,11 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                <div>
+                <NavBar>
                     <Link to='/Trips'>Trips</Link>
+                    <br />
                     <Link to='/AddTrip'>Add Trip</Link>
-                </div>
+                </NavBar>
                 {/*<TypeList types={this.state.types} selectedType={this.state.selected} changeSelected={this.changeSelected} />*/}
                 <Route exact path='/Trips'
                        render={props => (
