@@ -1,10 +1,11 @@
 import React from 'react'
 
 const Type = props => {
+    // console.log(props.type)
     return (
         <div
             onClick={() => {
-                props.selectTypeHandler(props.type);
+                props.changeSelected(props.type);
             }}
         >
             {props.type}

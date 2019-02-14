@@ -15,6 +15,11 @@ const TripList = props => {
             {props.trips.map(trip => {
                 // console.log(trip);
                 return <Trip
+                    newTrip={props.newTrip}
+                    handleChange={props.handleChange}
+                    updateTrip={props.updateTrip}
+                    deleteTrip={props.deleteTrip}
+                    id={trip.id}
                     key={trip.id}
                     title={trip.title}
                     location={trip.location}
