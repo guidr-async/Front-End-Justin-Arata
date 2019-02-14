@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import LoginScreen from './components/login/LoginScreen'
 import HomePage from "./components/homepage/HomePage";
+import { Route } from 'react-router-dom'
 
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <HomePage />
+        <Route exact path='/' component={HomePage} />
       </div>
     );
   }

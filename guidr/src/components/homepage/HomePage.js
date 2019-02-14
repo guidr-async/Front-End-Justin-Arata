@@ -1,21 +1,9 @@
-// nav bar
-    // add a trip link
-    // profile link
-        // info editable
-        // user adventures displayed in trip card area
-    // home page
-    // logout link
-
-    // trip type filter link
-        // all, hiking, backpacking, rock climbing, cycling, scuba diving
-
-// list of trip cards displayed out
-
 import React, {Component} from 'react';
 import TripList from "./TripList";
 import axios from "axios";
 import AddTripForm from "../addTrip/AddTripForm";
-import TypeList from './TypeList'
+import TypeList from './TypeList';
+import { Link } from 'react-router-dom'
 
 class HomePage extends Component {
     constructor(props) {
@@ -67,7 +55,7 @@ class HomePage extends Component {
         })
     };
     addTrip = event => {
-        event.preventDefault()
+        event.preventDefault();
         axios
             .post('https://guidr2.herokuapp.com/adventures', this.state.newTrip)
             .then(response => {
@@ -108,7 +96,9 @@ class HomePage extends Component {
             <div>
                 {/*<TypeList types={this.state.types} selectedType={this.state.selected} changeSelected={this.changeSelected} />*/}
                 <TripList handleChange={this.handleChange} deleteTrip={this.deleteTrip} trips={this.filterTypes()} newTrip={this.state.newTrip} />
-                <AddTripForm addTrip={this.addTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} />
+                <Link to={'/addTrip'} component={AddTripForm}>
+                    <AddTripForm addTrip={this.addTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} />
+                </Link>
             </div>
         );
     }
