@@ -13,7 +13,11 @@ const NavBar = styled.div`
   flex-direction: row;
   justify-content: space-around;
   font-weight: bold;
+  background: #70655e;
+`
+const NavText = styled.p`
   text-decoration: none;
+  font-weight: bold;
 `
 
 class HomePage extends Component {
@@ -106,9 +110,14 @@ class HomePage extends Component {
         return (
             <div>
                 <NavBar>
-                    <Link to='/Trips'>Trips</Link>
+                    <img src="homepage\screen_shot_2019-02-11_at_4.44.12_pm.png" alt='' />
+                    <Link to='/Trips'>
+                        <NavText>Trips</NavText>
+                    </Link>
                     <br />
-                    <Link to='/AddTrip'>Add Trip</Link>
+                    <Link to='/AddTrip'>
+                        <p>Add Trip</p>
+                    </Link>
                 </NavBar>
                 {/*<TypeList types={this.state.types} selectedType={this.state.selected} changeSelected={this.changeSelected} />*/}
                 <Route exact path='/Trips'
