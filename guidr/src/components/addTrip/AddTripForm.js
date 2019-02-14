@@ -68,7 +68,7 @@ const AddTripForm = props => {
                     placeholder="Enter date here"
                 />
                 Date
-                {/*<button onClick={props.addTrip}>Submit</button>*/}
+                <button onClick={props.addTrip}>Submit</button>
             </form>
         </div>
     )

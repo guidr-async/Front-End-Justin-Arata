@@ -3,7 +3,8 @@ import TripList from "./TripList";
 import axios from "axios";
 import AddTripForm from "../addTrip/AddTripForm";
 import TypeList from './TypeList';
-import { Link } from 'react-router-dom'
+import {Link, Route} from 'react-router-dom'
+import NavLink from "../../App";
 
 class HomePage extends Component {
     constructor(props) {
@@ -94,11 +95,30 @@ class HomePage extends Component {
     render() {
         return (
             <div>
+                <div>
+                    <Link to='/Trips'>Trips</Link>
+                    <Link to='/AddTrip'>Add Trip</Link>
+                </div>
                 {/*<TypeList types={this.state.types} selectedType={this.state.selected} changeSelected={this.changeSelected} />*/}
-                <TripList handleChange={this.handleChange} deleteTrip={this.deleteTrip} trips={this.filterTypes()} newTrip={this.state.newTrip} />
-                <Link to={'/addTrip'} component={AddTripForm}>
-                    <AddTripForm addTrip={this.addTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} />
-                </Link>
+                <Route exact path='/Trips'
+                       render={props => (
+                           <TripList
+                               {...props}
+                               handleChange={this.handleChange}
+                               deleteTrip={this.deleteTrip}
+                               trips={this.filterTypes()}
+                               newTrip={this.state.newTrip}
+                           />
+                       )}
+                />
+                {/*<TripList handleChange={this.handleChange} deleteTrip={this.deleteTrip} trips={this.filterTypes()} newTrip={this.state.newTrip} />*/}
+                {/*<Link to={'/addTrip'} component={AddTripForm}>*/}
+                    {/*<AddTripForm addTrip={this.addTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} />*/}
+                {/*</Link>*/}
+                <Route path='/AddTrip' render={props => (
+                    <AddTripForm {...props} newTrip={this.state.newTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} addTrip={this.addTrip} />
+                    )}
+                />
             </div>
         );
     }
