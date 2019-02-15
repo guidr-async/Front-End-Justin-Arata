@@ -1,21 +1,24 @@
-// nav bar
-    // add a trip link
-    // profile link
-        // info editable
-        // user adventures displayed in trip card area
-    // home page
-    // logout link
-
-    // trip type filter link
-        // all, hiking, backpacking, rock climbing, cycling, scuba diving
-
-// list of trip cards displayed out
-
 import React, {Component} from 'react';
 import TripList from "./TripList";
 import axios from "axios";
 import AddTripForm from "../addTrip/AddTripForm";
-import TypeList from './TypeList'
+import {Link, Route} from 'react-router-dom'
+import styled from 'styled-components'
+
+// Styled Components
+const NavBar = styled.div`
+  border: 1px solid black;
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight: bold;
+  background: #70655e;
+`
+const NavText = styled.p`
+  text-decoration: none;
+  font-weight: bold;
+`
 
 class HomePage extends Component {
     constructor(props) {
@@ -67,7 +70,7 @@ class HomePage extends Component {
         })
     };
     addTrip = event => {
-        event.preventDefault()
+        event.preventDefault();
         axios
             .post('https://guidr2.herokuapp.com/adventures', this.state.newTrip)
             .then(response => {
@@ -106,9 +109,36 @@ class HomePage extends Component {
     render() {
         return (
             <div>
+                <NavBar>
+                    <img src="homepage\screen_shot_2019-02-11_at_4.44.12_pm.png" alt='' />
+                    <Link to='/Trips'>
+                        <NavText>Trips</NavText>
+                    </Link>
+                    <br />
+                    <Link to='/AddTrip'>
+                        <p>Add Trip</p>
+                    </Link>
+                </NavBar>
                 {/*<TypeList types={this.state.types} selectedType={this.state.selected} changeSelected={this.changeSelected} />*/}
-                <TripList handleChange={this.handleChange} deleteTrip={this.deleteTrip} trips={this.filterTypes()} newTrip={this.state.newTrip} />
-                <AddTripForm addTrip={this.addTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} />
+                <Route exact path='/Trips'
+                       render={props => (
+                           <TripList
+                               {...props}
+                               handleChange={this.handleChange}
+                               deleteTrip={this.deleteTrip}
+                               trips={this.filterTypes()}
+                               newTrip={this.state.newTrip}
+                           />
+                       )}
+                />
+                {/*<TripList handleChange={this.handleChange} deleteTrip={this.deleteTrip} trips={this.filterTypes()} newTrip={this.state.newTrip} />*/}
+                {/*<Link to={'/addTrip'} component={AddTripForm}>*/}
+                    {/*<AddTripForm addTrip={this.addTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} />*/}
+                {/*</Link>*/}
+                <Route path='/AddTrip' render={props => (
+                    <AddTripForm {...props} newTrip={this.state.newTrip} handleChange={this.handleChange} newTrip={this.state.newTrip} addTrip={this.addTrip} />
+                    )}
+                />
             </div>
         );
     }

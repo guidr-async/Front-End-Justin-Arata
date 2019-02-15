@@ -3,9 +3,38 @@ import React, {Component} from 'react';
 import styled from 'styled-components'
 import axios from "axios";
 
+
+// Styled Components
 const TripCard = styled.div`
   border: 1px solid black;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
   width: 300px;
+  margin: 15px;
+  background: #cc9759;
+`;
+const Button = styled.div`
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 5px;
+  margin: 15px;
+  color: #fbefda;
+  background: #4d0111;
+  &:hover {
+  background: #70655e;
+  }
+`;
+const TripText = styled.p`
+  font-weight: bold;
+  color: #fbefda;
+ `;
+const EditForm = styled.form`
+  border: 1px solid black;
+  margin: 15px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 `;
 
 class Trip extends Component {
@@ -44,86 +73,88 @@ class Trip extends Component {
             <div>
                 <TripCard>
                     <div>
-                        <p>{this.props.title}</p>
+                        <TripText>{this.props.title}</TripText>
                     </div>
                     <div>
-                        <p>Location: {this.props.location}</p>
-                        <p>Adventure Type: {this.props.adventure_type}</p>
-                        <p>Duration: {this.props.duration}</p>
-                        <p>Work or Pleasure? {this.props.professional ? 'Work' : 'Pleasure'}</p>
+                        <TripText>Location: {this.props.location}</TripText>
+                        <TripText>Adventure Type: {this.props.adventure_type}</TripText>
+                        <TripText>Duration: {this.props.duration}</TripText>
+                        <TripText>Work or Pleasure? {this.props.professional ? 'Work' : 'Pleasure'}</TripText>
                     </div>
                     <div>
                         {/*need to make this username string*/}
-                        <p>{this.props.user_id}</p>
-                        <p>Trip Date: {this.props.date}</p>
+                        <TripText>{this.props.user_id}</TripText>
+                        <TripText>Trip Date: {this.props.date}</TripText>
                     </div>
-                    <button onClick={(e) => this.props.deleteTrip(e, this.props.id)}>X</button>
-                    <form onSubmit={(e) => this.updateTrip(e, this.props.id)}>
-                        <p>Title</p>
-                        <input
-                            value={this.state.title}
-                            name="title"
-                            type="text"
-                            placeholder="Trip title"
-                            onChange={this.handleChange}
-                        />
-                        <p>Location</p>
-                        <input
-                            value={this.state.location}
-                            name="location"
-                            type="text"
-                            placeholder="Trip location"
-                            onChange={this.handleChange}
-                        />
-                        <p>Adventure Type</p>
-                        <input
-                            value={this.state.adventure_type}
-                            name="adventure_type"
-                            type="text"
-                            onChange={this.handleChange}
-                        />
-                        <p>Duration</p>
-                        <input
-                            value={this.state.duration}
-                            onChange={this.handleChange}
-                            name="duration"
-                            type="text"
-                            placeholder="Trip length"
-                        />
-                        {/*<p>Work or Pleasure?</p>*/}
-                        {/*<input*/}
-                        {/*value={props.newTrip.professional}*/}
-                        {/*onChange={props.handleChange}*/}
-                        {/*name="professional"*/}
-                        {/*type="radio"*/}
-                        {/*/>*/}
-                        {/*Work*/}
-                        {/*<input*/}
-                        {/*value={props.newTrip.professional}*/}
-                        {/*onChange={props.handleChange}*/}
-                        {/*name="professional"*/}
-                        {/*type="radio"*/}
-                        {/*/>*/}
-                        {/*Pleasure*/}
-                        <input
-                            value={this.state.description}
-                            onChange={this.handleChange}
-                            name="description"
-                            type="text"
-                            placeholder="Enter description here"
-                        />
-                        Description
-                        <input
-                            value={this.state.date}
-                            onChange={this.handleChange}
-                            name="date"
-                            type="text"
-                            placeholder="Enter date here"
-                        />
-                        Date
-                        {/*<button onClick={props.addTrip}>Submit</button>*/}
-                        <div onClick={this.updateTrip}>update trip</div>
-                    </form>
+                    <div>
+                        <EditForm onSubmit={(e) => this.updateTrip(e, this.props.id)}>
+                            <TripText>Title</TripText>
+                            <input
+                                value={this.state.title}
+                                name="title"
+                                type="text"
+                                placeholder="Trip title"
+                                onChange={this.handleChange}
+                            />
+                            <TripText>Location</TripText>
+                            <input
+                                value={this.state.location}
+                                name="location"
+                                type="text"
+                                placeholder="Trip location"
+                                onChange={this.handleChange}
+                            />
+                            <TripText>Adventure Type</TripText>
+                            <input
+                                value={this.state.adventure_type}
+                                name="adventure_type"
+                                type="text"
+                                onChange={this.handleChange}
+                            />
+                            <TripText>Duration</TripText>
+                            <input
+                                value={this.state.duration}
+                                onChange={this.handleChange}
+                                name="duration"
+                                type="text"
+                                placeholder="Trip length"
+                            />
+                            {/*<p>Work or Pleasure?</p>*/}
+                            {/*<input*/}
+                            {/*value={props.newTrip.professional}*/}
+                            {/*onChange={props.handleChange}*/}
+                            {/*name="professional"*/}
+                            {/*type="radio"*/}
+                            {/*/>*/}
+                            {/*Work*/}
+                            {/*<input*/}
+                            {/*value={props.newTrip.professional}*/}
+                            {/*onChange={props.handleChange}*/}
+                            {/*name="professional"*/}
+                            {/*type="radio"*/}
+                            {/*/>*/}
+                            {/*Pleasure*/}
+                            <input
+                                value={this.state.description}
+                                onChange={this.handleChange}
+                                name="description"
+                                type="text"
+                                placeholder="Enter description here"
+                            />
+                            <TripText>Description</TripText>
+                            <input
+                                value={this.state.date}
+                                onChange={this.handleChange}
+                                name="date"
+                                type="text"
+                                placeholder="Enter date here"
+                            />
+                            <TripText>Date</TripText>
+                            <Button onClick={this.updateTrip}>Edit Trip</Button>
+                            <Button onClick={(e) => this.props.deleteTrip(e, this.props.id)}>Delete Trip</Button>
+                        </EditForm>
+                    </div>
+
                 </TripCard>
             </div>
         );
